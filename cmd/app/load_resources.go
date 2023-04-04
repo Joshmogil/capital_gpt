@@ -8,7 +8,7 @@ import (
 )
  
 
-func (env *environment) loadMotivations(config_location string) error {
+func (env *environment) loadResources(config_location string) error {
 	file, _ := ioutil.ReadFile(config_location)
 	
 	var data []string

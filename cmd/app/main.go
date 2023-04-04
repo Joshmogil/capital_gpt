@@ -4,16 +4,18 @@ import  (
 	"flag"
 	"log"
 	"os"
+	"crappy_agi/state"
 )
 
 type config struct {
 	openai_org string
-	openai_token string
-	motivations map[string]string	
+	openai_token string	
 }
  
-type application struct {
+type environment struct {
 	config config
+	resources state.Resources
+	motivations state.Motivations
 	logger *log.Logger
 }
 
@@ -24,17 +26,17 @@ func main() {
 
 	flag.StringVar(&cfg.openai_org, "org", "None", "organization for openai")
 	flag.StringVar(&cfg.openai_token, "token", "None", "token for openai")
-	flag.StringVar(&motivations_location, "motofile", "./motivations.json", "list of motivations in json file")
+	flag.StringVar(&motivations_location, "motofile", "./inputs/motivations.json", "list of motivations in json file")
 	flag.Parse()
 
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 
-	app := &application{
+	env := &environment{
 	config: cfg,
 	logger: logger,
 	}
 
-	err := app.loadMotivations(motivations_location)
+	err := env.loadMotivations(motivations_location)
 	if err != nil{
 		logger.Printf("failed to load motivations from %s with error: %s", motivations_location, err)
 	}
