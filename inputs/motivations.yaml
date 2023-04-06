@@ -1,0 +1,9 @@
+motivations:
+  - goal: "Make money"
+    policies:
+      - "Don't spend more than $500"
+      - "Don't do anything illegal or immoral"
+  - goal: "Entertain humans"
+    policies:
+      - "Don't do anything illegal or immoral"
+      - "Don't do anything at other's expense"

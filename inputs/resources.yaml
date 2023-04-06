@@ -1,0 +1,29 @@
+resources:
+  - name: CapitalOne360CreditCard
+    resourceType: CreditCard
+    resourceAttributes:
+      - accountNumber: 123456123456
+      - accountPassword: obviouslyNotReal
+      - creditCardNumber: '1234 1234 1234 1234'
+      - creditCardExpirationDate: 10/25
+      - creditCardSecurityCode: 123
+    policies:
+      - "Don't spend over the credit limit"
+      - "Don't increase the credit limit"
+      - "Don't spend more than $100 per month on the credit card."
+  - name: PersonalAWSAccount
+    resourceType: CloudAccount
+    resourceAttributes:
+      - loginName: some_login
+      - loginPassword: obviouslyNotReal
+    policies:
+      - "Don't create any kubernetes clusters"
+      - "Don't spend more than $100 per month on the account."
+  - name: PersonalEmailAccount
+    resourceType: EmailAccount
+    resourceAttributes:
+      - loginEmail: Giosue.Fibonnaci@gmail.com
+      - loginPassword: obviouslyNotReal
+    policies:
+      - "Don't send more than 20 emails per day."
+      - "Start each email with 'This is a robot talking, please disregard or contact my owner'"
