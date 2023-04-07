@@ -1,3 +1,3 @@
-module crappy_agi
+module capital_gpt
 
 go 1.18

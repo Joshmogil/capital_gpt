@@ -4,7 +4,7 @@ import  (
 	"flag"
 	"log"
 	"os"
-	"crappy_agi/state"
+	"capital_gpt/models"
 )
 
 type config struct {

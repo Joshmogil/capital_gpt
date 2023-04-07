@@ -1,4 +1,4 @@
-package state
+package models
 
 type resource struct {
 	name string
