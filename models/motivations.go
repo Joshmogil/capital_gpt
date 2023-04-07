@@ -1,27 +1,42 @@
 package models
 
-type motivation struct {
-	body string
-	policies []string
+import (
+	"io/ioutil"
+	"gopkg.in/yaml.v3"
+	"log"
+	"fmt"
+)
+
+type Motivation struct {
+	Body string
+	Policies []string
 }
 
 type Motivations struct {
-	motivations map[int]motivation
+	motivations map[string]Motivation
 }
 
-func (motivations *Motivations) loadMotivations(config_location string) error {
-	file, _ := ioutil.ReadFile(config_location)
-	
-	var data []string
-	err := json.Unmarshal([]byte(file), &data)
+func (motivations *Motivations) loadMotivations(configLocation string) error {
+	file, err := ioutil.ReadFile(configLocation)
 	if err != nil {
 		return err
+    }
+
+	data := make(map[string]Motivation)
+	err2 := yaml.Unmarshal(file, &data)
+	if err2 != nil {
+		return err2
 	}
 
-	fmt.Println("Loaded Motivations")
-	for i := 0; i < len(data); i++ {
-		fmt.Printf("Motivation %s: %s \n",strconv.Itoa(i), data[i])
-	}
+	for mName, mStruct := range data {
+		fmt.Printf("%s: %s\n  Policies:\n", mName, mStruct.Body)
+		for i := range mStruct.Policies {
+			fmt.Printf("    %d: %s \n",i ,mStruct.Policies[i])
+		}
 
+    }
+
+	motivations.motivations = data
+	log.Printf("Successfully loaded motivations from local file %s", configLocation)
 	return nil
 }
