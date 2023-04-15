@@ -1,6 +1,6 @@
-package connectors
+package ai
 
-type apiConnector interface {
+type aiConnector interface {
 	getResponse(string) string
 	testConnection() bool
 }
