@@ -1,6 +1,5 @@
 package ai
 
-type aiConnector interface {
+type AiConnector interface {
 	getResponse(string) string
-	testConnection() bool
 }

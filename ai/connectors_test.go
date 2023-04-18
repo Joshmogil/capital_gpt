@@ -31,5 +31,5 @@ func TestGpt4Connection(t *testing.T) {
 
     resp := gptConn.getResponse("Hello!!")
 
-    log.Printf("Gpt's response: %s", resp.Choices[0].Message.Content)
+    log.Printf("Gpt's response: %s", resp)
 }

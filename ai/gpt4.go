@@ -14,9 +14,7 @@ type gpt4Connection struct {
 }
 
 
-
-
-func (conn *gpt4Connection) getResponse(prompt string) openai.ChatCompletionResponse {
+func (conn *gpt4Connection) getResponse(prompt string) string {
 	client := openai.NewClient(conn.apiToken)
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
@@ -30,12 +28,14 @@ func (conn *gpt4Connection) getResponse(prompt string) openai.ChatCompletionResp
 			},
 		},
 	)
+	
+	
 
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
-	return resp
+	return resp.Choices[0].Message.Content
 }
 
 

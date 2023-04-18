@@ -14,8 +14,8 @@ type config struct {
  
 type environment struct {
 	config config
-	resources state.Resources
-	motivations state.Motivations
+	resources models.Resources
+	motivations models.Motivations
 	logger *log.Logger
 }
 

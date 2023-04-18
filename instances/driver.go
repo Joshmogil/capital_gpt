@@ -1,4 +1,4 @@
-package main
+package instances
 
 type driverResponse struct {
 
